@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import unittest
 from datetime import datetime, date
 
@@ -44,7 +47,7 @@ class StringTest(unittest.TestCase):
         attr = attributes.String('Attr')
         self.assertEqual(attr.coerce(1), '1')
         self.assertEqual(attr.coerce('1'), '1')
-        self.assertEqual(attr.coerce(u'\xe9'), u'\xe9')
+        self.assertEqual(attr.coerce('È'), 'È')
         self.assertRaises(NullSalesforceColumnError, attr.coerce, None)
 
     def test_nullable(self):

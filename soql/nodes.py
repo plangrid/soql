@@ -16,6 +16,7 @@ import six
 from dateutil.tz import tzutc
 
 from soql.utils import AttrDict
+from soql.utils import to_unicode
 
 
 # The various operations you can perform in SOQL
@@ -91,17 +92,14 @@ class Node(object):
         self.child_nodes = child_nodes
         self.sep = sep
 
-    def as_string(self):
-        return self.sep.join([str(node) for node in self.child_nodes])
+    def _as_string(self, method):
+        return self.sep.join([method(node) for node in self.child_nodes])
 
     def __unicode__(self):
-        return six.u(self.as_string())
+        return to_unicode(self._as_string(to_unicode))
 
     def __str__(self):
-        return str(self.as_string())
-
-    def __bytes__(self):
-        return six.b(self.as_string())
+        return str(self._as_string(str))
 
 
 class Grouped(Node):

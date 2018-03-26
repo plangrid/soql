@@ -7,6 +7,7 @@
     :copyright: Copyright 2018 PlanGrid, Inc., see AUTHORS.
     :license: MIT, see LICENSE for details.
 """
+import sys
 
 
 class AttrDict(dict):
@@ -14,3 +15,9 @@ class AttrDict(dict):
     static sets prettier."""
     def __getattr__(self, attr):
         return self[attr]
+
+
+if sys.version_info[0] < 3:
+    to_unicode = unicode
+else:
+    to_unicode = str
