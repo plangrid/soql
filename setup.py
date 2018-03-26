@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 if __name__ == '__main__':
     setup(
         name='soql',
-        version='0.1.0',
+        version='1.0.0',
         author='Barak Alon',
         author_email='barak.s.alon@gmail.com',
         description='Models and query generator for Salesforce Object Query Language (SOQL)',
