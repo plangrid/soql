@@ -1,6 +1,13 @@
 SOQL
 ====
 
+.. image:: https://travis-ci.org/plangrid/soql.svg?branch=master
+   :target: https://travis-ci.org/plangrid/soql
+   :alt: CI Status
+
+.. image:: https://badge.fury.io/py/soql.svg
+   :target: https://badge.fury.io/py/soql
+   :alt: PyPI status
 
 |
 

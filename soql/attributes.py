@@ -10,7 +10,6 @@
 from __future__ import absolute_import
 from datetime import datetime, date
 
-import six
 from dateutil.parser import parse
 from dateutil.tz import tzutc
 
@@ -112,9 +111,10 @@ class Column(AttributeBase):
 
 class String(Column):
     def _coerce(self, value):
-        if not isinstance(value, six.string_types):
-            value = str(value)
-        return six.u(value)
+        try:
+            return str(value)
+        except UnicodeEncodeError:
+            return value
 
 
 class Integer(Column):

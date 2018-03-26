@@ -9,10 +9,9 @@
 """
 from __future__ import absolute_import
 
-import six
-
 from soql.attributes import Relationship
 from soql.nodes import ColumnPath
+from soql.utils import to_unicode
 
 
 class PathBuilder(object):
@@ -145,10 +144,7 @@ class PathBuilder(object):
         return self.extend_path(item=item)
 
     def __unicode__(self):
-        return six.u(self.get_column_node())
+        return to_unicode(self.get_column_node())
 
     def __str__(self):
         return str(self.get_column_node())
-
-    def __bytes__(self):
-        return six.b(self.get_column_node())

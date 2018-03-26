@@ -12,13 +12,12 @@ from __future__ import absolute_import
 from collections import OrderedDict
 from copy import copy
 
-import six
-
 from soql.nodes import SubqueryClause
 from soql.nodes import OrderByClause
 from soql.nodes import Count
 from soql.nodes import SelectClause
 from soql.path_builder import PathBuilder
+from soql.utils import to_unicode
 
 
 class SelectClauseIsntValidSubquery(Exception):
@@ -195,13 +194,10 @@ class SelectClauseBuilder(object):
 
     def __unicode__(self):
         """Converts the instance to a SOQL string."""
-        return six.u(self._get_select_clause())
+        return to_unicode(self._get_select_clause())
 
     def __str__(self):
         return str(self._get_select_clause())
-
-    def __bytes__(self):
-        return six.b(self._get_select_clause())
 
     def _get_columns(self):
         if self._count:

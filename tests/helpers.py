@@ -1,7 +1,6 @@
-import six
+from soql.utils import to_unicode
 
 
 class SoqlAssertions(object):
     def assertSoqlEqual(self, node, soql):
-        self.assertEqual(six.u(str(node)), six.u(soql))
-        self.assertEqual(six.b(str(node)), six.b(soql))
+        self.assertEqual(to_unicode(node), to_unicode(soql))
