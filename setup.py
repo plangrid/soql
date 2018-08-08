@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 if __name__ == '__main__':
@@ -12,7 +12,7 @@ if __name__ == '__main__':
         long_description=open('README.rst').read(),
         keywords=['salesforce', 'soql', 'salesforce.com'],
         license='MIT',
-        packages=find_packages(exclude=('test*')),
+        packages=['soql'],
         install_requires=[
             'python-dateutil',
             'six',
