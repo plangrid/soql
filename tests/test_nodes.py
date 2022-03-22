@@ -101,6 +101,14 @@ class OperationsTest(unittest.TestCase):
             str(column_path.not_in_(['Jin', 'Jan'])),
             "Monkey.Tail NOT IN ('Jin', 'Jan')"
         )
+        self.assertEqual(
+            str(column_path.includes_(['Jin', 'Jan'])),
+            "Monkey.Tail INCLUDES ('Jin', 'Jan')"
+        )
+        self.assertEqual(
+            str(column_path.excludes_(['Jin', 'Jan'])),
+            "Monkey.Tail EXCLUDES ('Jin', 'Jan')"
+        )
 
         self.assertEqual(
             str(and_(column_path == 'R', column_path < 10)),

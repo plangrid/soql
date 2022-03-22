@@ -248,6 +248,14 @@ class Operatable(object):
         container = _get_container_node(value=iterable)
         return Expression(lhs=self, op=OPS.NOT_IN, rhs=container)
 
+    def includes_(self, iterable):
+        container = _get_container_node(value=iterable)
+        return Expression(lhs=self, op=OPS.INCLUDES, rhs=container)
+
+    def excludes_(self, iterable):
+        container = _get_container_node(value=iterable)
+        return Expression(lhs=self, op=OPS.EXCLUDES, rhs=container)
+
 
 class ColumnPath(Node, Operatable):
     def __init__(self, *elements):
