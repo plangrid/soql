@@ -41,6 +41,14 @@ class RelationshipTest(unittest.TestCase):
         attr = attributes.Relationship('Attr', related_model=RelatedModel, many=True)
         self.assertEqual(attr.load(None), [])
 
+    def test_coerce_when_relationship_is_nullable(self):
+        attr = attributes.Relationship('Attr', related_model=RelatedModel, nullable=True)
+        self.assertEqual(attr.coerce(None), None)
+
+    def test_coerce_when_relationship_is_not_nullable(self):
+        attr = attributes.Relationship('Attr', related_model=RelatedModel, nullable=False)
+        self.assertRaises(NullSalesforceColumnError, attr.coerce, None)
+
 
 class StringTest(unittest.TestCase):
     def test_coerce(self):

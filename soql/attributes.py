@@ -71,7 +71,7 @@ class AttributeBase(object):
 
 
 class Relationship(AttributeBase):
-    def __init__(self, salesforce_name, related_model, many=False):
+    def __init__(self, salesforce_name, related_model, many=False, nullable=False):
         """
         This special attribute represents a relationship to another model.
 
@@ -81,8 +81,9 @@ class Relationship(AttributeBase):
             can be used - the latter of which allows for circular references.
         :param many: If False (default), this represents a many-to-one
             relationship. If True, this represents a one-to-many relationship.
+        :param bool nullable: If True, this field can be None.
         """
-        super(Relationship, self).__init__(salesforce_name=salesforce_name)
+        super(Relationship, self).__init__(salesforce_name=salesforce_name, nullable=nullable)
         self._related_model = related_model
         self.many = many
 
