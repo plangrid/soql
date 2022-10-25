@@ -89,8 +89,7 @@ Relationships can also be declared:
    class Account(Model):
        id = attributes.String('Id')
        owner = attributes.Relationship('Owner', related_model=User)
-       contacts = attributes.Relationship('Contacts', related_model=User, many=True)
-
+       contacts = attributes.Relationship('Contacts', related_model=User, many=True, nullable=True)
 
 Queries
 ~~~~~~~
